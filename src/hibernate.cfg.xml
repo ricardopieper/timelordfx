@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/timelord?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping class="model.ArquivoCliente"/>
+    <mapping class="model.ArquivoProjeto"/>
+    <mapping class="model.Cliente"/>
+    <mapping class="model.Endereco"/>
+    <mapping class="model.Ocorrencia"/>
+    <mapping class="model.Projeto"/>
+    <mapping class="model.Recurso"/>
+    <mapping class="model.RegistroTarefa"/>
+    <mapping class="model.Setor"/>
+    <mapping class="model.Tarefa"/>
+    <mapping class="model.TarefaRecurso"/>
+    <mapping package="model"/>
+  </session-factory>
+</hibernate-configuration>

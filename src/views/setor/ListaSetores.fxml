@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import jidefx.scene.control.field.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.setor.ListaSetoresController">
+   <children>
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#close" text="Fechar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="10.0">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ui/imagens/close.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <VBox prefHeight="20.0" prefWidth="100.0" spacing="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <HBox prefHeight="10.0" prefWidth="200.0" spacing="25.0">
+               <children>
+                  <Label text="Nome:" />
+                  <TextField fx:id="setorNome" prefHeight="25.0" prefWidth="158.0" />
+                 
+                  <Label text="Status:" />
+                  <RadioButton fx:id="rbStatusAtivo" mnemonicParsing="false" selected="true" text="Ativo">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="status" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbStatusInativo" mnemonicParsing="false" text="Inativo" toggleGroup="$status" />
+            
+                  <Button alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#filter" text="Pesquisar">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../ui/imagens/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" onAction="#clearFilter" text="Limpar">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../ui/imagens/erase.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+            <HBox focusTraversable="true" prefHeight="10.0" prefWidth="200.0" spacing="25.0" />
+         </children>
+      </VBox>
+      <TableView fx:id="grid" layoutX="43.0" layoutY="119.0" onMouseClicked="#gridClick" prefWidth="929.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+        <columns>
+          <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="colDesc" prefWidth="495.0" text="Descrição" />
+            <TableColumn fx:id="colStatus" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Status" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox layoutX="33.0" layoutY="536.0" prefHeight="35.0" prefWidth="791.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="148.0">
+         <children>
+            <Button alignment="CENTER" minWidth="130.0" mnemonicParsing="false" onAction="#insert" text="Novo Setor...">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ui/imagens/new.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="editarSetor" alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#edit" text="Editar Setor Selecionado...">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ui/imagens/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="desativarSetor" alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#delete" text="Desativar Setor Selecionado">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ui/imagens/cancel.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="ativarSetor" mnemonicParsing="false" onAction="#ativar" prefHeight="25.0" text="Ativar Setor Selecionado">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ui/imagens/ok.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children></HBox>
+   </children>
+</AnchorPane>

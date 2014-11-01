@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.home.HomeController">
+   <children>
+      <Pane prefHeight="110.0" prefWidth="600.0" styleClass="black" stylesheets="@home.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fitHeight="93.0" fitWidth="90.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@../../ui/imagens/clock.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="112.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TimeLord" wrappingWidth="436.13671875" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Segoe UI Light" size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="114.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.1 alpha">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="topMenu" layoutY="110.0" prefHeight="24.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0" />
+   </children>
+</AnchorPane>

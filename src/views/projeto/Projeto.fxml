@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import jidefx.scene.control.field.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="397.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.projeto.ProjetoController">
+   <children>
+      <SplitPane dividerPositions="0.5191919191919192" prefHeight="356.0" prefWidth="992.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label text="Dados do Projeto" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="Segoe UI Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <GridPane prefHeight="133.0" prefWidth="474.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="NEVER" minWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="400.0" minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nome:" />
+                        <Label text="Descrição:" GridPane.rowIndex="1" />
+                        <TextField fx:id="nome" prefHeight="25.0" prefWidth="449.0" GridPane.columnIndex="1" />
+                        <TextArea fx:id="desc" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextArea>
+                     </children>
+                  </GridPane>
+                  <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="200.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <ComboBox fx:id="cliente" prefHeight="25.0" prefWidth="178.0" promptText="Selecione um cliente..." />
+                              <CheckBox fx:id="usaEndCliente" mnemonicParsing="false" text="Usar Endereço do Cliente" />
+                           </children>
+                        </HBox>
+                        <Label text="Cliente:" />
+                     </children>
+                  </GridPane>
+                  <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="230.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Endereço:" />
+                        <TextField fx:id="endereco" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label text="Número:" GridPane.columnIndex="2" />
+                        <TextField fx:id="numero" GridPane.columnIndex="3" />
+                        <Label text="Bairro:" GridPane.rowIndex="1" />
+                        <TextField fx:id="bairro" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label text="CEP:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <MaskTextField fx:id="cep" inputMask="999-99999" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label text="Complemento:" GridPane.rowIndex="3" />
+                        <Label text="Cidade:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="Estado:" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="estado" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </ComboBox>
+                        <TextField fx:id="cidade" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="complemento" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" text="Passo 2: Arquivos do Escopo:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="Segoe UI Light" size="20.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane fx:id="files" layoutX="14.0" layoutY="40.0" prefHeight="278.0" prefWidth="437.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <Label fx:id="noImagesLabel" layoutX="14.0" layoutY="14.0" text="Não existem arquivos adicionados ao projeto. Clique em Adicionar Arquivo &#10;para adicionar um arquivo ao projeto.&#10;" />
+                     </children></AnchorPane>
+                  <Button fx:id="btnAddFile" layoutX="14.0" layoutY="318.0" mnemonicParsing="false" onAction="#addFile" text="Adicionar Arquivo" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../ui/imagens/new.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnRemoveFile" layoutX="153.0" layoutY="318.0" mnemonicParsing="false" onAction="#removeFile" text="Remover Selecionado" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="153.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../ui/imagens/cancel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button fx:id="btnCancel" layoutX="896.0" layoutY="362.0" mnemonicParsing="false" onAction="#cancel" text="Cancelar" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ui/imagens/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnSave" layoutX="823.0" layoutY="362.0" mnemonicParsing="false" onAction="#save" text="Salvar" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ui/imagens/ok.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
