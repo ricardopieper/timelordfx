@@ -40,7 +40,7 @@ public abstract class BaseController<E> implements Initializable {
     private Stage currentStage;
     private TimeLord lord;
     public Pane mainPane;
-    
+
     protected List<PropItem> fields = new ArrayList<>();
     protected HashMap<String, PropItem> keyedFields = new HashMap<>();
     protected PropertySheet propertySheet;// = new PropertySheet();
@@ -76,24 +76,34 @@ public abstract class BaseController<E> implements Initializable {
             Scene scene = new Scene(mainPane);
 
             dialog.setScene(scene);
-            double w = mainPane.getWidth();
-            double h = mainPane.getHeight();
-
-            dialog.setWidth(w);
-            dialog.setHeight(h);
 
             this.setApplication(TimeLord.ApplicationInstance); //it doesnt make any sense lol
             this.setDialogStage(dialog);
-            dialog.centerOnScreen();            
-            
-            if (wait) {
-                dialog.showAndWait();
+            dialog.centerOnScreen();
 
-            } else {
-                dialog.show();
-                dialog.centerOnScreen();
+            dialog.show();
+            
+            double w = 0;
+            double h = 0;
+
+            if (mainPane instanceof AnchorPane) {
+                w += mainPane.getWidth() + 40;
+                h += mainPane.getHeight() + 40;
             }
 
+            if (mainPane instanceof BorderPane) {
+                BorderPane b = (BorderPane) mainPane;
+
+                w += b.getWidth() + 40;
+                h += ((AnchorPane) b.getTop()).getHeight();
+
+                h += ((AnchorPane) b.getCenter()).getHeight();
+                h += 40;
+            }
+
+            dialog.setWidth(w);
+            dialog.setHeight(h);
+            dialog.centerOnScreen();
         }
 
     }
@@ -150,19 +160,19 @@ public abstract class BaseController<E> implements Initializable {
     }
 
     private boolean hasHeader = false;
-    
+
     @FXML
     private Label title;
     private String titleStr;
-    
+
     @FXML
     private Label subtitle;
     private String subtitleStr;
-   
+
     @FXML
     private ImageView image;
     private String imagePath;
-    
+
     public void setCadastroLayout(String titulo, String subtitulo, String caminhoimg) {
         try {
             if (titulo == null) {
@@ -183,19 +193,15 @@ public abstract class BaseController<E> implements Initializable {
             this.titleStr = titulo;
             this.subtitleStr = subtitulo;
             this.imagePath = caminhoimg;
-            
-            
-          ((Label)parentPane.lookup("#title")).setText(titulo);
-          ((Label)parentPane.lookup("#subtitle")).setText(subtitulo);
-         ((ImageView)parentPane.lookup("#image")).setImage(new Image(caminhoimg));
-            
-            
+
+            ((Label) parentPane.lookup("#title")).setText(titulo);
+            ((Label) parentPane.lookup("#subtitle")).setText(subtitulo);
+            ((ImageView) parentPane.lookup("#image")).setImage(new Image(caminhoimg));
+
             parentPane.setCenter(this.mainPane);
             this.hasHeader = true;
             this.mainPane = parentPane;
 
-            
-            
         } catch (IOException ex) {
             ex.printStackTrace();
 
@@ -261,12 +267,8 @@ public abstract class BaseController<E> implements Initializable {
 
             StringBuilder mensagem = new StringBuilder();
 
-            s.validationResultProperty()
-                    .addListener((o, oldValue, newValue) -> newValue.getMessages().forEach(x -> {
+            s.getValidationResult().getErrors().forEach(x -> mensagem.append(x.getText()).append("\n"));
 
-                        mensagem.append(x.getText());
-
-                    }));
             notificacao("Erro!", "Preencha as informações obrigatórias!\n" + mensagem.toString(), Pos.CENTER);
         } else {
 

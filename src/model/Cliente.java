@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import utils.formatting.Formats;
 
 @Entity
 @Table(name = "clientes")
@@ -120,6 +121,11 @@ public class Cliente implements Serializable {
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.propId.hashCode());
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return this.getNome() + " - " + Formats.CPF.putMask(this.getCpf());
     }
 
 }

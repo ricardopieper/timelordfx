@@ -41,13 +41,19 @@ public class ImageBox extends VBox {
         String fileUri = new File(imgData.getPath()).toURI().toString();
 
         javafx.scene.image.Image img = new javafx.scene.image.Image(fileUri);
+        if (img.getWidth() == 0.0) {
+            img = new javafx.scene.image.Image(
+            
+                    timelord.TimeLord.class.getResourceAsStream(imgData.getPath())
+            
+            );
 
+        }
         imgView = new ImageView(img);
         imgView.setFitHeight(height);
         imgView.setFitWidth(width);
         imgView.fitWidthProperty().bind(widthProperty());
-        
-        
+
         label = new Label(imgData.getName());
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(
@@ -58,14 +64,13 @@ public class ImageBox extends VBox {
         this.setOnMouseClicked(e -> {
 
             if (onClickEvent != null) {
-                
+
                 onClickEvent.accept(this);
 
             }
 
         });
 
-        
     }
 
     private Consumer<ImageBox> onClickEvent;

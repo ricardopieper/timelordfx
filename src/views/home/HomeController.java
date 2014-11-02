@@ -16,6 +16,7 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.control.action.ActionGroup;
 import org.controlsfx.control.action.ActionUtils;
 import views.cliente.ListaClientesController;
+import views.projeto.ProjetoController;
 import views.setor.ListaSetoresController;
 
 /**
@@ -35,9 +36,9 @@ public class HomeController implements Initializable {
                 new ActionGroup("Cadastros",
                         new Action("Cadastro de Clientes", this::openCadCliente),
                         new Action("Cadastro de Setores", this::openCadSetores)),
-                new ActionGroup("Projetos", 
-                        new Action("Novo Projeto..."))
-                );
+                new ActionGroup("Projetos",
+                        new Action("Novo Projeto...", this::newProj))
+        );
 
         MenuBar menubar = ActionUtils.createMenuBar(actions);
 
@@ -67,8 +68,18 @@ public class HomeController implements Initializable {
         ListaSetoresController controller
                 = ListaSetoresController.loadView("/views/setor/ListaSetores.fxml");
 
-        controller.setCadastroLayout("Listagem de Setores","Listagem dos setores cadastrados", "ui/imagens/sector.png");
+        controller.setCadastroLayout("Listagem de Setores", "Listagem dos setores cadastrados", "ui/imagens/sector.png");
         controller.openAsync("Lista de Setores");
+
+    }
+
+    public void newProj(ActionEvent e) {
+
+        ProjetoController controller
+                = ProjetoController.loadView("/views/projeto/Projeto.fxml");
+
+        controller.setCadastroLayout("Novo Projeto", "Preencha as informações do projeto", "ui/imagens/project.png");
+        controller.openAsync("Novo Projeto");
 
     }
 

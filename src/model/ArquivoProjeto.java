@@ -83,11 +83,13 @@ public class ArquivoProjeto implements Serializable, IArquivo {
                 base = base += "file.png";
                 break;
         }
+  
+       // return new File(base).getAbsolutePath();
         return base;
 
     }
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     public String getExtensao() {
         return propExtensao.get();
     }

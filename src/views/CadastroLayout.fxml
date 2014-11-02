@@ -21,7 +21,7 @@
             <Label fx:id="subtitle" layoutX="90.0" layoutY="50.0" prefHeight="17.0" text="Insira os dados e clique em Salvar." AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="50.0" />
             <ImageView fx:id="image" fitHeight="92.0" fitWidth="125.0" layoutX="40.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../ui/imagens/1414721744_news.png" />
+                  <Image url="@../ui/imagens/form.png" />
                </image>
             </ImageView>
          </children>

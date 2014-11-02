@@ -10,7 +10,14 @@ public class ImageCell<T extends IArquivo> extends GridCell<T> {
     public ImageCell() {
 
         getStyleClass().add("image-grid-cell");
-        imageBox = new ImageBox(170, 170);
+        imageBox = new ImageBox(128, 128);
+
+    }
+
+    public ImageCell(int w, int h) {
+
+        getStyleClass().add("image-grid-cell");
+        imageBox = new ImageBox(w, h);
 
     }
 
