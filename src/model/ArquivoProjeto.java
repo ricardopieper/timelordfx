@@ -1,6 +1,7 @@
 package model;
 
 import imagescroller.IArquivo;
+import java.io.File;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.beans.property.*;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import utils.FileUtils;
 
 @Entity
 @Table(name = "arquivosprojeto")
@@ -37,9 +40,51 @@ public class ArquivoProjeto implements Serializable, IArquivo {
     }
 
     @Column(length = 255, nullable = false)
-    @Override
+
     public String getCaminho() {
         return propCaminho.get();
+    }
+
+    @Override
+    @Transient
+    public String getCaminhoImagem() {
+        File f = new File(getCaminho());
+
+        String base = "/ui/imagens/";
+
+        String ext = FileUtils.getFileExtension(f.getAbsolutePath());
+        ext = ext.toLowerCase();
+        switch (ext) {
+            case "jpg":
+            case "png":
+            case "jpeg":
+            case "bmp":
+            case "gif":
+                return getCaminho();
+            case "xls":
+            case "xlsx":
+                base = base += "excel.png";
+                break;
+            case "doc":
+            case "docx":
+            case "rtf":
+                base = base += "word.png";
+                break;
+            case "ppt":
+            case "pptx":
+            case "pps":
+            case "ppsx":
+                base = base += "powerpoint.png";
+                break;
+            case "pdf":
+                base = base += "pdf.png";
+                break;
+            default:
+                base = base += "file.png";
+                break;
+        }
+        return base;
+
     }
 
     @Column(length = 20, nullable = false)

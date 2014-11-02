@@ -16,12 +16,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import jidefx.scene.control.field.*;
 import model.ArquivoCliente;
 import model.ArquivoProjeto;
 import model.Cliente;
+import model.Endereco;
 import model.Projeto;
 import org.controlsfx.control.GridCell;
 import org.controlsfx.control.GridView;
@@ -29,6 +31,8 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import ui.DAOController;
 import utils.Estado;
+import utils.Lists;
+import utils.formatting.Formats;
 
 /**
  * FXML Controller class
@@ -87,6 +91,9 @@ public class ProjetoController extends DAOController<Projeto, ProjetosDAO> {
 
     @FXML
     public Label noImagesLabel;
+
+    @FXML
+    public GridPane gridEndereco;
 
     private final GridView<ArquivoProjeto> grid = new GridView<>();
     private ImageCell selectedCell;
@@ -207,7 +214,49 @@ public class ProjetoController extends DAOController<Projeto, ProjetosDAO> {
 
     }
 
+    public Projeto proj;
+
     public void bind(Projeto p) {
+        this.proj = p;
+
+        this.nome.setText(p.getNome());
+        this.desc.setText(p.getDescricao());
+
+        if (p.getCliente() != null) {
+            this.cliente.getSelectionModel().select(p.getCliente());
+            if (Lists.getLast(p.getCliente().getEnderecos()) != null) {
+
+                Endereco e = Lists.getLast(p.getCliente().getEnderecos());
+
+                if (p.getEndereco().equals(p.getEndereco())) {
+                    usaEndCliente.setSelected(true);
+                    gridEndereco.setDisable(true);
+                } else {
+                    usaEndCliente.setSelected(false);
+                    gridEndereco.setDisable(false);
+
+                }
+
+            }
+        }
+
+        if (p.getEndereco() != null) {
+            Endereco e = p.getEndereco();
+
+            endereco.setText(e.getEndereco());
+            numero.setText(e.getNumeroEndereco());
+            bairro.setText(e.getBairro());
+            cep.setText(Formats.CEP.putMask(e.getCep()));
+
+            estado.getSelectionModel()
+                    .select(Estado.getEstadoByUf(e.getUf()));
+            
+            cidade.setText(e.getCidade());
+            complemento.setText(e.getComplemento());
+
+        }
+        arquivos.setAll(p.getArquivos());
+        
 
     }
 

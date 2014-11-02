@@ -28,7 +28,7 @@ public class Estado {
 
             return e.sigla.equals(this.sigla);
         }
-        if (obj instanceof String){
+        if (obj instanceof String) {
             return obj.equals(this.sigla);
         }
         return false;
@@ -82,4 +82,20 @@ public class Estado {
         return _statesCache;
 
     }
+
+    public static Estado getEstadoByUf(String uf) {
+
+        return getAllBrazillianStates()
+                .stream()
+                .filter((x -> x.sigla.equals(uf)))
+                .findFirst()
+                .orElse(
+                        getAllBrazillianStates()
+                        .stream()
+                        .filter((x -> x.sigla.equals("RS")))
+                        .findFirst().get()
+                );
+
+    }
+
 }

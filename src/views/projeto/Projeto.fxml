@@ -31,7 +31,7 @@
                       <RowConstraints maxHeight="400.0" minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nome:" />
+                        <Label text="Nome*:" />
                         <Label text="Descrição:" GridPane.rowIndex="1" />
                         <TextField fx:id="nome" prefHeight="25.0" prefWidth="449.0" GridPane.columnIndex="1" />
                         <TextArea fx:id="desc" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -59,7 +59,7 @@
                               <CheckBox fx:id="usaEndCliente" mnemonicParsing="false" text="Usar Endereço do Cliente" />
                            </children>
                         </HBox>
-                        <Label text="Cliente:" />
+                        <Label text="Cliente*:" />
                      </children>
                   </GridPane>
                   <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="230.0">
@@ -125,7 +125,7 @@
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ui/imagens/new.png" />
+                              <Image url="@../../../src/ui/imagens/new.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -134,7 +134,7 @@
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ui/imagens/cancel.png" />
+                              <Image url="@../../../src/ui/imagens/cancel.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -147,7 +147,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../ui/imagens/close.png" />
+                  <Image url="@../../../src/ui/imagens/close.png" />
                </image>
             </ImageView>
          </graphic>
@@ -156,7 +156,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../ui/imagens/ok.png" />
+                  <Image url="@../../../src/ui/imagens/ok.png" />
                </image>
             </ImageView>
          </graphic>

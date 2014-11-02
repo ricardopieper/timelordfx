@@ -19,7 +19,7 @@ public class ImageCell<T extends IArquivo> extends GridCell<T> {
         super.updateItem(item, empty);
 
         TaggedImage<T> g
-                = new TaggedImage<>(item.getCaminho(), item.getNome(), item);
+                = new TaggedImage<>(item.getCaminhoImagem(), item.getNome(), item);
 
         imageBox.setImageData(g);
         imageBox.renderNode();

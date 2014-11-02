@@ -1,4 +1,3 @@
-
 package model;
 
 import imagescroller.IArquivo;
@@ -12,9 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name =  "arquivoscliente")
+@Table(name = "arquivoscliente")
 public class ArquivoCliente implements Serializable, IArquivo {
 
     public IntegerProperty propId = new SimpleIntegerProperty();
@@ -24,46 +24,75 @@ public class ArquivoCliente implements Serializable, IArquivo {
     public BooleanProperty propStatus = new SimpleBooleanProperty();
     public ObjectProperty<Cliente> propCliente = new SimpleObjectProperty<>();
 
-    
-    public ArquivoCliente(String name, String path){
+    public ArquivoCliente(String name, String path) {
         this.setCaminho(path);
         this.setNome(name);
         this.setStatus(true);
     }
-    public ArquivoCliente(){};
-    
-    
-    
-    
-    
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO) 
-    public int getId(){ return propId.get();}
-    
+
+    public ArquivoCliente() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getId() {
+        return propId.get();
+    }
+
     @Column(length = 200, nullable = true)
     @Override
-    public String getNome(){ return propNome.get();}
-   
-    @Column(length = 255, nullable=false)
+    public String getNome() {
+        return propNome.get();
+    }
+
+    @Column(length = 255, nullable = false)
+
+    public String getCaminho() {
+        return propCaminho.get();
+    }
+
     @Override
-    public String getCaminho(){return propCaminho.get();}
-    
-        
+    @Transient
+    public String getCaminhoImagem() {
+        return getCaminho();
+    }
+
     @Column(length = 20)
-    public String getExtensao(){return propExtensao.get();}
-    
-    public boolean getStatus(){ return propStatus.get();}
-    
+    public String getExtensao() {
+        return propExtensao.get();
+    }
+
+    public boolean getStatus() {
+        return propStatus.get();
+    }
+
     @ManyToOne
-    public Cliente getCliente(){return propCliente.get();}   
-    
-   
-    
-    public void setId(int value){ this.propId.set(value); }
-    public void setNome(String value){ this.propNome.set(value); }
-    public void setCaminho(String value){this.propCaminho.set(value);}     
-    public void setExtensao(String value){this.propExtensao.set(value);}
-    public void setStatus(boolean value){ this.propStatus.set(value); }
-    public void setCliente(Cliente value){ this.propCliente.set(value); }
+    public Cliente getCliente() {
+        return propCliente.get();
+    }
+
+    public void setId(int value) {
+        this.propId.set(value);
+    }
+
+    public void setNome(String value) {
+        this.propNome.set(value);
+    }
+
+    public void setCaminho(String value) {
+        this.propCaminho.set(value);
+    }
+
+    public void setExtensao(String value) {
+        this.propExtensao.set(value);
+    }
+
+    public void setStatus(boolean value) {
+        this.propStatus.set(value);
+    }
+
+    public void setCliente(Cliente value) {
+        this.propCliente.set(value);
+    }
 
 }
