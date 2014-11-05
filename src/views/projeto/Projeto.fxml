@@ -46,8 +46,8 @@
                         </TextArea>
                         <Label text="Data Prevista de Início:" GridPane.rowIndex="2" />
                         <Label text="Data Prevista de Término:" GridPane.rowIndex="3" />
-                        <DateField popupButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <DateField popupButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DateField fx:id="dataInicio" popupButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DateField fx:id="dataFim" popupButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="300.0">

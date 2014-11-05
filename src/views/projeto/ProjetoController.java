@@ -100,10 +100,10 @@ public class ProjetoController extends DAOController<Projeto, ProjetosDAO> {
 
     @FXML
     public GridPane gridEndereco;
-    
+
     @FXML
     public DateField dataInicio;
-   
+
     @FXML
     public DateField dataFim;
 
@@ -272,10 +272,10 @@ public class ProjetoController extends DAOController<Projeto, ProjetosDAO> {
                 }
 
                 if (proj.getId() == 0) {
-                    
+
                     proj.setDataCadastro(LocalDate.now());
                     proj.setStatus(1);
-                    
+
                     daoObject.Insert(proj);
                 } else {
                     daoObject.Update(proj);
@@ -403,6 +403,10 @@ public class ProjetoController extends DAOController<Projeto, ProjetosDAO> {
 
     public ProjetoController() {
         super(new ProjetosDAO());
+    }
+
+    public Projeto getProjeto() {
+        return this.proj;
     }
 
 }

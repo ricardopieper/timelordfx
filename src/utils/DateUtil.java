@@ -1,5 +1,6 @@
 package utils;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -35,12 +36,12 @@ public class DateUtil {
 
     public static LocalDate localDateFromDate(Date d) {
         if (d == null) return null;
-        return d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(d.getTime()), ZoneId.systemDefault()).toLocalDate();
     }
 
     public static LocalDateTime localDateTimeFromDate(Date d) {
         if (d == null) return null;
-        return d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        return  LocalDateTime.ofInstant(Instant.ofEpochMilli(d.getTime()), ZoneId.systemDefault());
     }
 
     public static Date dateFromLocalDate(LocalDate d){

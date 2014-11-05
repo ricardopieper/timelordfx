@@ -3,7 +3,6 @@ package model;
 import imagescroller.IArquivo;
 import java.io.File;
 import java.io.Serializable;
-import java.time.LocalDate;
 import javafx.beans.property.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import utils.FileUtils;
@@ -39,8 +37,7 @@ public class ArquivoProjeto implements Serializable, IArquivo {
         return propNome.get();
     }
 
-    @Column(length = 255, nullable = false)
-
+    @Column(length = 255)
     public String getCaminho() {
         return propCaminho.get();
     }
@@ -116,7 +113,7 @@ public class ArquivoProjeto implements Serializable, IArquivo {
     }
 
     public void setExtensao(String value) {
-        this.propCaminho.set(value);
+        this.propExtensao.set(value);
     }
 
     public void setStatus(boolean value) {

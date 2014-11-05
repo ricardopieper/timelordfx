@@ -12,11 +12,16 @@ import javafx.scene.Node;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import model.Projeto;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.control.action.ActionGroup;
 import org.controlsfx.control.action.ActionUtils;
 import views.cliente.ListaClientesController;
 import views.projeto.ProjetoController;
+import views.projeto.escolher.EscolherController;
+import views.projeto.list.ListaProjetos;
+import views.projeto.setores.SetoresController;
+import views.projeto.tarefas.ArvoreTarefasController;
 import views.setor.ListaSetoresController;
 
 /**
@@ -37,7 +42,8 @@ public class HomeController implements Initializable {
                         new Action("Cadastro de Clientes", this::openCadCliente),
                         new Action("Cadastro de Setores", this::openCadSetores)),
                 new ActionGroup("Projetos",
-                        new Action("Novo Projeto...", this::newProj))
+                        new Action("Novo Projeto...", this::newProj),
+                        new Action("Lista de Projetos", this::openProjList))
         );
 
         MenuBar menubar = ActionUtils.createMenuBar(actions);
@@ -81,6 +87,43 @@ public class HomeController implements Initializable {
         controller.setCadastroLayout("Novo Projeto", "Preencha as informações do projeto", "ui/imagens/project.png");
         controller.openAsync("Novo Projeto");
 
+        controller.getDialogStage().setOnHidden(
+                x -> chooseCopyOrCreate(controller.getProjeto()));
+
     }
 
+    public void chooseCopyOrCreate(Projeto p) {
+
+        EscolherController controller
+                = EscolherController.loadView("/views/projeto/escolher/Escolher.fxml");
+
+        controller.setProjeto(p);
+        controller.setCadastroLayout("Escolher", "Escolha entre criar um projeto do zero OU copiar de um projeto existente", "ui/imagens/project.png");
+        controller.openAsync("Projeto");
+
+        // controller.getDialogStage().setOnHidden(
+        //        x -> setSetores(controller.getProjeto()));
+    }
+
+    public void setSetores(Projeto p) {
+
+        SetoresController controller
+                = SetoresController.loadView("/views/projeto/setores/Setores.fxml");
+
+        controller.setProjeto(p);
+        controller.setCadastroLayout("Setores", "Escolha os setores envolvidos", "ui/imagens/project.png");
+        controller.openAsync("Setores");
+
+        //  controller.getDialogStage().setOnHidden(
+        //           x -> setSetores(controller.getProjeto()));
+    }
+
+    public void openProjList(ActionEvent e) {
+
+        ListaProjetos arvore
+                = ListaProjetos.loadView("/views/projeto/list/ListaProjetos.fxml");
+        arvore.setCadastroLayout("Lista de Projetos", "Lista de Projetos", null);
+        arvore.openAndWait("Listagem de Projetos");
+
+    }
 }

@@ -1,23 +1,12 @@
 package timelord;
 
-import dao.ClientesDAO;
 import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-import static javafx.application.Application.launch;
-import static javafx.application.Application.launch;
-import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import ui.BaseController;
 import views.cliente.ListaClientesController;
 import views.home.HomeController;
 
@@ -70,7 +59,7 @@ public class TimeLord extends Application {
 
     public void mostrarClientes() {
         try {
-
+ 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(TimeLord.class.getResource("/views/cliente/ListaClientes.fxml"));
 

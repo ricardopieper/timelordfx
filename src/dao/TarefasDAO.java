@@ -13,14 +13,11 @@ public class TarefasDAO extends BaseDAO<Tarefa> {
         return (List<Tarefa>) RunQuery(s->
         
                 s.createCriteria(Tarefa.class)
-                    .add(Restrictions.eq("projeto_id", p.getId()))
+                    .add(Restrictions.eq("projeto", p))
                     .list()
         
         );
         
     }
-    
-   
-    
-    
+ 
 }

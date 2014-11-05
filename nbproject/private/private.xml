@@ -11,6 +11,15 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/model/ArquivoProjeto.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/views/projeto/tarefas/ArvoreTarefasController.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/dao/TarefasDAO.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/dao/BaseDAO.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/utils/DAO.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/model/Tarefa.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/views/projeto/setores/SetoresController.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/TimeLord/timelordfx/src/model/Setor.java</file>
+        </group>
     </open-files>
 </project-private>

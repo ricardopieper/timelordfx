@@ -38,7 +38,7 @@ public abstract class DAO {
         
         R ret = func.apply(s);
         
-        if (s.isOpen()) s.close();
+        //if (s.isOpen()) s.close();
         
         return ret;
     }
