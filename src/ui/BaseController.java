@@ -123,8 +123,6 @@ public abstract class BaseController implements Initializable {
         }
     }
 
-    private boolean hasHeader = false;
-
     public void setCadastroLayout(String titulo, String subtitulo, String caminhoimg) {
         try {
             if (titulo == null) {
@@ -147,7 +145,7 @@ public abstract class BaseController implements Initializable {
             ((ImageView) parentPane.lookup("#image")).setImage(new Image(caminhoimg));
 
             parentPane.setCenter(this.mainPane);
-            this.hasHeader = true;
+           
             this.mainPane = parentPane;
 
         } catch (IOException ex) {

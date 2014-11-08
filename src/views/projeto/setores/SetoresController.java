@@ -170,8 +170,8 @@ public class SetoresController extends BaseController {
 
         Tarefa tp = new Tarefa();
         tp.setNome(projeto.getNome());
-        tp.setDataHoraInicio(projeto.getDataPrevInicio().atStartOfDay());
-        tp.setDataHoraFim(projeto.getDataPrevFim().atStartOfDay());
+        tp.setDataInicio(projeto.getDataPrevInicio());
+        tp.setDataFim(projeto.getDataPrevFim());
         tp.setDescricao(projeto.getDescricao());
         tp.setStatus(1);
         tp.setProjeto(projeto);
@@ -191,8 +191,8 @@ public class SetoresController extends BaseController {
                 Tarefa t = new Tarefa();
                 t.setSetor(s);
                 t.setNome(s.getNome());
-                t.setDataHoraInicio(projeto.getDataPrevInicio().atStartOfDay());
-                t.setDataHoraFim(projeto.getDataPrevFim().atStartOfDay());
+                t.setDataInicio(projeto.getDataPrevInicio());
+                t.setDataFim(projeto.getDataPrevFim());
                 t.setDescricao(s.getNome());
                 t.setTarefaPai(tp);
                 t.setStatus(1);

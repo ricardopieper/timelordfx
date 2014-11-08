@@ -2,14 +2,21 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,8 +34,21 @@ public class Tarefa implements Serializable {
     public DoubleProperty propCustoRealizado = new SimpleDoubleProperty();
     public ObjectProperty<Setor> propSetor = new SimpleObjectProperty<>();
     public ObjectProperty<Projeto> propProjeto = new SimpleObjectProperty<>();
-
+    public List<TarefaRecurso> propRecursos = new ArrayList<>(); // FXCollections.observableArrayList();
     public IntegerProperty propStatus = new SimpleIntegerProperty();
+
+    //Many to many
+    //só preciso saber os recursos da tarefa
+    @OneToMany(mappedBy = "pk.tarefa")
+    public List<TarefaRecurso> getRecursos() {
+        return propRecursos;
+    }
+
+    public void setRecursos(List<TarefaRecurso> recursos) {
+        if (recursos != null) {
+            propRecursos = recursos;
+        }
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +66,7 @@ public class Tarefa implements Serializable {
         return propNome.get();
     }
 
-    @Column(length = 2000, nullable = false)
+    @Column(length = 2000)
     public String getDescricao() {
         return propDescricao.get();
     }
@@ -144,7 +164,25 @@ public class Tarefa implements Serializable {
 
     @Override
     public String toString() {
-        return this.getNome();
+        return this.propNome.get();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o != null && o instanceof Tarefa) {
+            Tarefa t = (Tarefa) o;
+            if (t.getId() == this.getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.propId);
+        return hash;
     }
 
 }

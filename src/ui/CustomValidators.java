@@ -15,7 +15,7 @@ public class CustomValidators {
             BooleanSupplier boolPred) {
         return (c, value) -> {
             
-            boolean cond = value instanceof String
+           boolean cond = value instanceof String
                     ? value.toString().trim().isEmpty()
                     : value == null;
 
